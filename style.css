@@ -1,0 +1,100 @@
+header {
+  font-size: 1.5em;
+}
+header nav ul a {
+  text-decoration: none;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: rgb(245, 245, 217);
+  font-family: "Courier New", Courier, monospace;
+}
+button {
+  background-color: papayawhip;
+  border: 0.1em black solid;
+}
+.show input {
+  background-color: papayawhip;
+  border: 0.1em solid black;
+  color: rgb(0, 0, 0);
+}
+button:hover {
+  background-color: goldenrod;
+  transition: 0.3s;
+}
+body h1 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2.5em;
+  text-align: center;
+  text-shadow: 0 0 5px goldenrod;
+}
+
+body p {
+  font-size: 3em;
+  text-align: center;
+  margin: 10px;
+  padding: 1em;
+}
+body .show {
+  text-align: center;
+  padding: 1em;
+  margin: 1em;
+}
+body .show p {
+  text-align: center;
+  font-size: 1em;
+}
+/* progress bars for all browsers */
+progress {
+  -webkit-appearance: none;
+  border-radius: 20px;
+  width: 20em;
+}
+progress::-webkit-progress-bar {
+  background-color: papayawhip;
+  border-radius: 20px;
+}
+progress::-webkit-progress-inner-element {
+  border: 1.5px solid black;
+  border-radius: 20px;
+}
+progress::-webkit-progress-value {
+  background-color: goldenrod;
+  border-radius: 20px;
+  transition: width 0.2s ease-in;
+}
+progress::-moz-progress-bar {
+  background-color: goldenrod;
+  border-radius: 20px;
+  transition: width 0.2s ease-in;
+}
+.numbers {
+  animation: glow-green 2s ease-in infinite alternate;
+}
+@keyframes glow-green {
+  from {
+    color: rgb(3, 169, 3);
+    text-shadow: 0 0 10px rgb(3, 169, 3);
+  }
+  to {
+    color: rgb(6, 6, 6);
+    text-shadow: none;
+  }
+}
+.animated {
+  animation: wiggle 0.9s ease-in-out 3;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
