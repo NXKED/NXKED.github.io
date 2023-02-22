@@ -98,3 +98,9 @@ progress::-moz-progress-bar {
     transform: rotate(-2deg);
   }
 }
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: red;
+  }
+}
