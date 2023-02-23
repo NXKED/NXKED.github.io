@@ -37,7 +37,8 @@ body p {
   margin: 10px;
   padding: 1em;
 }
-body .show {
+body .show,
+.play {
   text-align: center;
   padding: 1em;
   margin: 1em;
@@ -101,6 +102,55 @@ progress::-moz-progress-bar {
 
 @media screen and (max-width: 768px) {
   body {
-    background-color: red;
+    text-align: flex;
+  }
+  body h1 {
+    font-size: 11vw;
+  }
+  body progress {
+    font-size: 4vw;
+    margin: 1.5vw;
+    width: 19em;
+  }
+
+  body button {
+    font-size: 1.2em;
+  }
+
+  body #info {
+    font-size: 1em;
+  }
+  body #numbers {
+    font-size: 11vw;
+    padding: 4vm;
+  }
+  body .show {
+    padding: 10px;
+  }
+  body .show label {
+    font-size: 7vw;
+  }
+  body input {
+    font-size: 1.2em;
+  }
+  body input#result {
+    margin: 2vw;
+    padding: 2vw;
+  }
+  body input#amount,
+  #speed {
+    width: 10vw;
+  }
+
+  header nav ul a {
+    visibility: hidden;
+  }
+  header nav ul {
+    margin: 0;
+    padding: 0;
+  }
+  #play {
+    text-align: center;
+    font-size: 8vw;
   }
 }

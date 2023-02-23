@@ -14,7 +14,6 @@
       </ul>
     </nav>
   </header>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 
@@ -34,15 +33,17 @@
     <button type="button" onclick="incrementSpeed()">+</button>
     <button type="button" onclick="decrementSpeed()">−</button>
     <progress id="speedProgress" value="1" max="10"></progress>
-    <p id="info">Pro: 2-4 | Advanced: 5-7 | Beginner: 8+</p>
+    <div class="info">
+      <p id="info">Pro: 2-4 | Advanced: 5-7 | Beginner: 8+</p>
+    </div>
   </div>
 
-  <div class="show">
-    <button type="text" onclick="getgoing()">Play</button>
+  <div class="play">
+    <button type="text" id="play" onclick="getgoing()">Play</button>
   </div>
 
   <p id="numbers" class="numbers">Press Play</p>
-  <!--<p id="output">result: </p> -->
+  <!--<p id="output">result:</p> -->
   <div class="show">
     <label for="result">What is the result?</label>
     <input type="text" id="result" name="result" placeholder="Enter">
@@ -151,6 +152,5 @@
   </script>
 
 </body>
-
 
 </html>
