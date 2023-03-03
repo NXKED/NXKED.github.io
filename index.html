@@ -36,28 +36,51 @@
     <div class="info">
       <p id="info">Pro: 2-4 | Advanced: 5-7 | Beginner: 8+</p>
     </div>
+    <!--
+      <label class="toggle">
+      <input id="toggle" type="checkbox">manual input</label>
+      -->
   </div>
 
   <div class="play">
-    <button type="text" id="play" onclick="getgoing()">Play</button>
+    <button type="text" id="playButtonHidden" onclick="getgoing()">Play</button>
   </div>
 
   <p id="numbers" class="numbers">Press Play</p>
   <!--<p id="output">result:</p> -->
   <div class="show">
-    <label for="result">What is the result?</label>
+    <label for="result" id="resultQ">What is the result?</label>
     <input type="text" id="result" name="result" placeholder="Enter">
-    <button type="button" onclick="checkResult()">Check</button>
-    <p id="answer"></p>
+    <button type="button" id="checkButton" onclick="checkResult()">Check</button>
+    <p id="answer"></p><button id="again" onclick="getgoing()">REPLAY</button>
   </div>
-
+  <div class="answers">
+    <button type="answerButton" id="answerButton0" onclick="checkButtonResult0()"></button>
+    <button type="answerButton" id="answerButton1" onclick="checkButtonResult1()"></button>
+    <button type="answerButton" id="answerButton2" onclick="checkButtonResult2()"></button>
+    <button type="answerButton" id="answerButton3" onclick="checkButtonResult3()"></button>
+  </div>
   <script>
     let xyz = 0;
+
+    document.getElementById("again").style.visibility = "hidden";
+    document.getElementById("answerButton0").style.visibility = "hidden";
+    document.getElementById("answerButton1").style.visibility = "hidden";
+    document.getElementById("answerButton2").style.visibility = "hidden";
+    document.getElementById("answerButton3").style.visibility = "hidden";
+    document.getElementById("result").style.visibility = "hidden";
+    document.getElementById("checkButton").style.visibility = "hidden";
+    document.getElementById("resultQ").style.visibility = "hidden";
+
 
     function getgoing() {
       let count = 0;
       let result = 0;
       let expected = 0;
+
+      document.getElementById("playButtonHidden").style.visibility = 'hidden';
+      document.getElementById("answer").style.visibility = 'hidden';
+      document.getElementById("again").style.visibility = 'hidden';
 
       const totalCount = parseInt(document.getElementById("amount").value);
       const totalSpeed = parseInt(document.getElementById("speed").value) * 200;
@@ -71,6 +94,7 @@
             //document.getElementById('output').innerHTML = result;
             xyz = result;
             document.getElementById('numbers').innerHTML = "finish";
+            showbuttons(xyz);
             return;
           }
           const max = 9;
@@ -83,7 +107,56 @@
       }
     }
 
+    function showbuttons(xyz) {
+      const pickAnswerArr = [];
+      //add answer to answerArr
+      pickAnswerArr.push(xyz);
+      //3 random answer options
+      while (pickAnswerArr.length < 4) {
+        const max = 9;
+        const min = -9;
+        var randomAnswer = Math.floor(Math.random() * (max - min + 1)) + min;
+        if (!pickAnswerArr.includes(randomAnswer)) {
+          pickAnswerArr.push(randomAnswer);
+        }
+      }
+      //shuffle answer arr
+      for (var i = pickAnswerArr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = pickAnswerArr[i];
+        pickAnswerArr[i] = pickAnswerArr[j];
+        pickAnswerArr[j] = temp;
+      }
+      //display 4 buttons with answers + check
+      document.getElementById("answerButton0").style.visibility = "visible";
+      document.getElementById("answerButton1").style.visibility = "visible";
+      document.getElementById("answerButton2").style.visibility = "visible";
+      document.getElementById("answerButton3").style.visibility = "visible";
+      document.getElementById("result").style.visibility = "visible";
+      document.getElementById("checkButton").style.visibility = "visible";
+      document.getElementById("resultQ").style.visibility = "visible";
+
+      for (var i = 0; i < 4; i++) {
+        document.getElementById("answerButton" + i).innerHTML = pickAnswerArr[i];
+        document.getElementById("answerButton" + i).onclick = function () {
+          if (this.innerHTML == xyz) {
+            document.getElementById("answer").style.visibility = 'visible';
+            document.getElementById("answer").innerHTML = "correct";
+            document.getElementById("answer").style.color = "green";
+            document.getElementById("again").style.visibility = "visible";
+          } else {
+            document.getElementById("answer").style.visibility = 'visible';
+            document.getElementById("answer").innerHTML = "false its " + xyz;
+            document.getElementById("answer").style.color = "red";
+            document.getElementById("again").style.visibility = "visible";
+          }
+        }
+      }
+    }
+
+
     function checkResult() {
+      document.getElementById("playButtonHidden").style.visibility = "visible";
       const userResult = parseInt(document.getElementById("result").value);
       if (userResult === xyz) {
         document.getElementById("answer").innerHTML = "correct";
@@ -91,6 +164,7 @@
         document.getElementById("answer").innerHTML = "false " + xyz;
       }
     }
+
 
     let speed = 1;
 
